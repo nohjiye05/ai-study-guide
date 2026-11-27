@@ -34,7 +34,7 @@ const prompts = [
   }
 ];
 
-// 프롬프트 목록 화면에 표시
+// 프롬프트 목록 표시
 
 function showPrompts() {
   const area = document.getElementById("prompt-list");
@@ -97,12 +97,13 @@ function showMajorGuide() {
 
   const guide = majorGuides[select.value];
 
+  if (!guide) return;
+
   result.textContent =
     guide.title + " 맞춤 프롬프트\n\n" +
     guide.content +
     "\n\n이 내용을 복사하여 원하는 AI 서비스에 붙여넣어 사용하세요.";
 }
-
 
 
 // 3. AI 활용 내역서 자동 생성
@@ -123,6 +124,7 @@ function makeCitation() {
   }
 
   // 대화 링크 형식 확인
+
   try {
     const url = new URL(link);
 
@@ -166,48 +168,6 @@ function makeCitation() {
   result.appendChild(copyButton);
 }
 
-  const tool = document.getElementById("ai-tool").value.trim();
-  const purpose = document.getElementById("ai-purpose").value.trim();
-  const content = document.getElementById("ai-content").value.trim();
-  const prompt = document.getElementById("ai-prompt").value.trim();
-  const date = document.getElementById("ai-date").value;
-
-  const result = document.getElementById("citation-result");
-
-  if (!tool || !purpose || !content || !prompt || !date) {
-    showToast("모든 항목을 입력해 주세요.");
-    return;
-  }
-
-  const citation =
-`[AI 활용 내역서]
-
-1. 활용 도구: ${tool}
-2. 활용 목적: ${purpose}
-3. 활용 내용: ${content}
-4. 사용한 프롬프트: ${prompt}
-5. 사용 날짜: ${date}
-
-※ 실제 활용 내역을 바탕으로 작성되었으며, 제출 전 내용과 출처를 확인해 주세요.`;
-
-  result.textContent = citation;
-
-  const copyButton = document.createElement("button");
-  copyButton.textContent = "내역서 복사하기";
-  copyButton.onclick = async () => {
-    try {
-      await navigator.clipboard.writeText(citation);
-      showToast("AI 활용 내역서가 복사되었습니다!");
-    } catch (error) {
-      showToast("복사에 실패했습니다. 브라우저 권한을 확인해 주세요.");
-    }
-  };
-
-  result.appendChild(document.createElement("br"));
-  result.appendChild(document.createElement("br"));
-  result.appendChild(copyButton);
-}
-
 
 // 4. 윤리 체크리스트 진행률
 
@@ -215,9 +175,9 @@ function updateProgress() {
   const checks = document.querySelectorAll(".ethics-check");
   const checked = document.querySelectorAll(".ethics-check:checked");
 
-  const percentage = Math.round(
-    (checked.length / checks.length) * 100
-  );
+  const percentage = checks.length
+    ? Math.round((checked.length / checks.length) * 100)
+    : 0;
 
   const text = document.getElementById("progress-text");
   const fill = document.getElementById("progress-fill");
@@ -237,19 +197,15 @@ function updateProgress() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 프롬프트 표시
   showPrompts();
 
-  // 전공별 가이드 표시
   const majorSelect = document.getElementById("major-select");
 
   if (majorSelect) {
     showMajorGuide();
-
     majorSelect.addEventListener("change", showMajorGuide);
   }
 
-  // 체크리스트 진행률 계산
   const checks = document.querySelectorAll(".ethics-check");
 
   checks.forEach(check => {
@@ -260,6 +216,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("AI STUDY GUIDE 실행 완료!");
 });
+
+
+// 6. 알림 메시지
+
 function showToast(message) {
   let toast = document.getElementById("toast-message");
 
