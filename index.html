@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI STUDY GUIDE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">AI STUDY GUIDE</div>
+    <nav>
+        <a href="#prompt">프롬프트</a>
+        <a href="#major">전공 가이드</a>
+        <a href="#citation">출처 작성</a>
+        <a href="#ethics">윤리 체크</a>
+        <a href="#guide">활용 원칙</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- 메인 화면 -->
+    <section class="hero">
+        <p class="tag">SMART AI FOR STUDENTS</p>
+        <h1>AI를 똑똑하게 활용하는 방법</h1>
+        <p>
+            과제부터 출처 작성까지,<br>
+            대학생을 위한 AI 활용 가이드
+        </p>
+        <a href="#prompt" class="main-button">시작하기 →</a>
+    </section>
+
+
+    <!-- 주요 기능 -->
+    <section class="features">
+        <h2>AI STUDY GUIDE</h2>
+        <p class="sub">대학생을 위한 AI 활용 도구를 만나보세요.</p>
+
+        <div class="card-grid">
+            <a href="#prompt" class="card">
+                <span>✦</span>
+                <h3>프롬프트 라이브러리</h3>
+                <p>과제와 학습에 필요한 질문 양식 제공</p>
+            </a>
+
+            <a href="#major" class="card">
+                <span>⌘</span>
+                <h3>전공별 AI 가이드</h3>
+                <p>전공 특성에 맞는 AI 활용 방법</p>
+            </a>
+
+            <a href="#citation" class="card">
+                <span>✎</span>
+                <h3>AI 활용 내역서</h3>
+                <p>AI 사용 내역과 출처 자동 작성</p>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- 프롬프트 라이브러리 -->
+    <section class="tool-section" id="prompt">
+        <h2>프롬프트 라이브러리</h2>
+        <p>학습 목적에 맞는 프롬프트를 선택하고 복사해 보세요.</p>
+
+        <div class="prompt-grid" id="prompt-list">
+            <!-- script.js에서 프롬프트 자동 출력 -->
+        </div>
+    </section>
+
+
+    <!-- 전공별 가이드 -->
+    <section class="tool-section" id="major">
+        <h2>전공별 AI 활용 가이드</h2>
+        <p>자신의 학습 분야를 선택하면 맞춤형 프롬프트를 제공합니다.</p>
+
+        <select id="major-select">
+            <option value="environment">환경공학</option>
+            <option value="chemistry">일반화학</option>
+            <option value="biology">생명과학</option>
+            <option value="math">수학·통계</option>
+        </select>
+
+        <div class="result-box" id="major-result"></div>
+    </section>
+
+
+    <!-- AI 활용 내역서 -->
+    <section class="tool-section" id="citation">
+        <h2>AI 활용 내역서 작성</h2>
+        <p>AI 사용 정보를 입력하면 활용 내역서를 자동으로 완성합니다.</p>
+
+        <div class="form-box">
+
+            <label for="ai-tool">1. 활용 도구</label>
+            <input type="text" id="ai-tool"
+                   placeholder="예: ChatGPT, Gemini, Claude">
+
+            <label for="ai-purpose">2. 활용 목적</label>
+            <input type="text" id="ai-purpose"
+                   placeholder="예: 전공 개념 이해">
+
+            <label for="ai-content">3. 활용 내용</label>
+            <textarea id="ai-content"
+                      placeholder="AI를 활용하여 수행한 내용을 입력하세요."></textarea>
+
+            <label for="ai-prompt">4. 사용한 프롬프트</label>
+            <textarea id="ai-prompt"
+                      placeholder="실제로 입력한 질문을 작성하세요."></textarea>
+
+            <label for="ai-date">5. 사용 날짜</label>
+            <input type="date" id="ai-date">
+
+            <button type="button" onclick="makeCitation()">
+                활용 내역서 만들기
+            </button>
+
+            <div class="result-box" id="citation-result"></div>
+
+        </div>
+    </section>
+
+
+    <!-- 윤리 체크리스트 -->
+    <section class="tool-section" id="ethics">
+        <h2>AI 활용 윤리 체크리스트</h2>
+        <p>과제 제출 전 올바르게 AI를 활용했는지 확인해 보세요.</p>
+
+        <div class="check-box">
+
+            <p id="progress-text">확인 진행률: 0% (0/6)</p>
+
+            <label>
+                <input type="checkbox" class="ethics-check">
+                AI가 제공한 정보의 정확성을 검증했나요?
+            </label>
+
+            <label>
+                <input type="checkbox" class="ethics-check">
+                AI가 생성한 내용을 그대로 제출하지 않았나요?
+            </label>
+
+            <label>
+                <input type="checkbox" class="ethics-check">
+                필요한 출처와 AI 활용 내역을 표시했나요?
+            </label>
+
+            <label>
+                <input type="checkbox" class="ethics-check">
+                타인의 저작권을 침해하지 않았나요?
+            </label>
+
+            <label>
+                <input type="checkbox" class="ethics-check">
+                개인정보와 민감한 정보를 보호했나요?
+            </label>
+
+            <label>
+                <input type="checkbox" class="ethics-check">
+                최종 결과물을 스스로 검토했나요?
+            </label>
+
+        </div>
+
+        <div class="progress-bar">
+            <div id="progress-fill"></div>
+        </div>
+
+    </section>
+
+
+    <!-- AI 활용 원칙 -->
+    <section class="tool-section" id="guide">
+        <h2>올바른 AI 활용 원칙</h2>
+        <p>책임감 있는 AI 활용을 위해 반드시 지켜야 할 세 가지 원칙입니다.</p>
+
+        <div class="guide-grid">
+
+            <div class="guide-card">
+                <h3>01. 저작권 준수</h3>
+                <p>
+                    타인의 창작물을 무단으로 사용하지 않고
+                    적절한 출처를 표시합니다.
+                </p>
+            </div>
+
+            <div class="guide-card">
+                <h3>02. 정보 검증</h3>
+                <p>
+                    AI가 제공하는 정보의 정확성을
+                    신뢰할 수 있는 자료와 비교하여 확인합니다.
+                </p>
+            </div>
+
+            <div class="guide-card">
+                <h3>03. 학습 주체성 유지</h3>
+                <p>
+                    AI에 전적으로 의존하지 않고
+                    스스로 생각하고 판단하는 과정을 유지합니다.
+                </p>
+            </div>
+
+            <div class="guide-card">
+                <h3>04. 개인정보 보호</h3>
+                <p>
+                    개인정보와 민감한 정보가
+                    외부에 노출되지 않도록 주의합니다.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- 마무리 -->
+    <section class="notice">
+        <h2>AI는 생각을 대신하는 도구가 아니라</h2>
+        <h2>생각을 확장하는 도구입니다.</h2>
+        <p>올바른 활용으로 더 나은 학습을 경험하세요.</p>
+    </section>
+
+</main>
+
+<footer>
+    AI STUDY GUIDE © 2026
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

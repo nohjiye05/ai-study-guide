@@ -1,0 +1,568 @@
+
+/* =========================
+   1. 기본 설정
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Malgun Gothic", sans-serif;
+  color: #24364b;
+  background: #ffffff;
+  line-height: 1.6;
+}
+
+/* =========================
+   2. 상단 메뉴
+========================= */
+
+header {
+  width: 100%;
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: #ffffff;
+  border-bottom: 1px solid #e9edf2;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: 800;
+  color: #142b49;
+  letter-spacing: -0.5px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #52677e;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: #285c91;
+}
+
+/* =========================
+   3. 메인 화면
+========================= */
+
+.hero {
+  text-align: center;
+  padding: 110px 20px 115px;
+  background: linear-gradient(
+    135deg,
+    #edf3fa,
+    #f7f9fc
+  );
+}
+
+.tag {
+  color: #4678a9;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  color: #142b49;
+  font-weight: 800;
+  margin-bottom: 22px;
+  letter-spacing: -1.5px;
+}
+
+.hero p:not(.tag) {
+  color: #65778c;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.main-button {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 34px;
+  background: #142b49;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.main-button:hover {
+  background: #285c91;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   4. 주요 기능 카드
+========================= */
+
+.features {
+  padding: 85px 8%;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 29px;
+  color: #142b49;
+  font-weight: 750;
+}
+
+.sub {
+  margin-top: 12px;
+  color: #8794a3;
+  font-size: 14px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 45px;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  text-align: left;
+  padding: 32px 28px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  border-radius: 14px;
+  color: #24364b;
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #a8bfd8;
+  box-shadow: 0 12px 28px rgba(20, 43, 73, 0.08);
+}
+
+.card span {
+  display: inline-block;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #142b49;
+}
+
+.card p {
+  font-size: 13px;
+  color: #8492a1;
+}
+
+/* =========================
+   5. 하단 안내 영역
+========================= */
+
+.notice {
+  text-align: center;
+  background: #142b49;
+  color: #ffffff;
+  padding: 75px 20px;
+}
+
+.notice h2 {
+  font-size: 25px;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+.notice p {
+  margin-top: 18px;
+  color: #c4d1df;
+  font-size: 14px;
+}
+
+/* =========================
+   6. 하단 정보
+========================= */
+
+footer {
+  text-align: center;
+  padding: 28px;
+  color: #8995a3;
+  font-size: 12px;
+  background: #ffffff;
+}
+
+/* =========================
+   7. 모바일 화면 대응
+========================= */
+
+@media (max-width: 900px) {
+  header {
+    padding: 18px 5%;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 75px 18px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .features {
+    padding: 60px 6%;
+  }
+
+  .features h2 {
+    font-size: 23px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .notice h2 {
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   8. 기능별 공통 영역
+========================= */
+
+.tool-section {
+  padding: 80px 8%;
+  scroll-margin-top: 90px;
+  border-top: 1px solid #edf0f4;
+}
+
+.tool-section h2 {
+  color: #142b49;
+  font-size: 29px;
+  margin-bottom: 12px;
+}
+
+.tool-section > p {
+  color: #7b8999;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   9. 프롬프트 라이브러리
+========================= */
+
+.prompt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.prompt-item {
+  padding: 25px;
+  border: 1px solid #e5eaf0;
+  border-radius: 13px;
+  background: #ffffff;
+  transition: 0.2s;
+}
+
+.prompt-item:hover {
+  border-color: #9bb9d7;
+  box-shadow: 0 8px 20px #142b4910;
+}
+
+.prompt-item small {
+  display: inline-block;
+  color: #4678a9;
+  background: #edf3fa;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-bottom: 13px;
+}
+
+.prompt-item h3 {
+  color: #142b49;
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.prompt-item p {
+  color: #68798c;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.prompt-item button,
+.form-box button {
+  background: #142b49;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.prompt-item button:hover,
+.form-box button:hover {
+  background: #285c91;
+}
+
+/* =========================
+   10. 전공별 가이드
+========================= */
+
+#major-select {
+  width: 100%;
+  max-width: 400px;
+  padding: 14px;
+  border: 1px solid #dce4ed;
+  border-radius: 8px;
+  background: white;
+  color: #24364b;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.result-box {
+  background: #edf3fa;
+  border-radius: 10px;
+  padding: 22px;
+  margin-top: 20px;
+  color: #52677e;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   11. 출처 작성 도우미
+========================= */
+
+.form-box {
+  max-width: 750px;
+  padding: 30px;
+  border: 1px solid #e5eaf0;
+  border-radius: 13px;
+  background: #ffffff;
+}
+
+.form-box label {
+  display: block;
+  color: #334b65;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 18px 0 8px;
+}
+
+.form-box input,
+.form-box textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #dce4ed;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+  border-color: #4678a9;
+  box-shadow: 0 0 0 3px #4678a915;
+}
+
+.form-box textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-box button {
+  margin-top: 22px;
+}
+
+/* =========================
+   12. 윤리 체크리스트
+========================= */
+
+.check-box {
+  max-width: 750px;
+  padding: 25px;
+  background: #f7f9fc;
+  border-radius: 12px;
+  border: 1px solid #e5eaf0;
+  margin-bottom: 25px;
+}
+
+.check-box label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 5px;
+  border-bottom: 1px solid #e8edf2;
+  color: #52677e;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.check-box label:last-child {
+  border-bottom: none;
+}
+
+.check-box input {
+  width: 17px;
+  height: 17px;
+  accent-color: #285c91;
+  cursor: pointer;
+}
+
+#progress-text {
+  color: #285c91;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  max-width: 750px;
+  height: 10px;
+  background: #e5eaf0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #4678a9;
+  border-radius: 20px;
+  transition: width 0.3s;
+}
+
+/* =========================
+   13. AI 활용 원칙
+========================= */
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.guide-card {
+  padding: 25px;
+  background: #f7f9fc;
+  border: 1px solid #e5eaf0;
+  border-radius: 12px;
+}
+
+.guide-card h3 {
+  color: #142b49;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.guide-card p {
+  color: #718196;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* =========================
+   14. 모바일 기능 화면
+========================= */
+
+@media (max-width: 768px) {
+  .tool-section {
+    padding: 55px 6%;
+  }
+
+  .tool-section h2 {
+    font-size: 24px;
+  }
+
+  .prompt-grid,
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-box {
+    padding: 20px;
+  }
+
+  .check-box {
+    padding: 15px;
+  }
+}
+#toast-message {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: #263b5a;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+#toast-message.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
