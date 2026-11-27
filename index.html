@@ -67,13 +67,17 @@
 
     <h2>나에게 맞는 AI 도구는?</h2>
     <p>학습 목적에 따라 적합한 AI를 선택해 보세요.</p>
-    
+
 <!-- 학습 목적 선택 -->
 <div class="model-test-box">
 
-    <h3>어떤 학습을 하고 싶나요?</h3>
+    <h3>어떤 학습을 도와드릴까요?</h3>
+    <p class="model-test-desc">
+        지금 필요한 학습 목적을 선택해 보세요.
+    </p>
 
-    <select id="ai-purpose-select">
+    <!-- 기존 추천 기능과 연결되는 숨겨진 선택값 -->
+    <select id="ai-purpose-select" style="display:none;">
         <option value="">학습 목적을 선택하세요</option>
         <option value="math">수식 풀이 및 논리적 문제 해결</option>
         <option value="research">자료 조사 및 정보 검색</option>
@@ -83,8 +87,55 @@
         <option value="korean">한국어 글쓰기 및 다양한 AI 활용</option>
     </select>
 
-    <button type="button" onclick="recommendAI()">
-        AI 추천받기 →
+    <div class="purpose-grid">
+
+        <button type="button" class="purpose-card"
+        onclick="selectAIPurpose('math', this)">
+            <span class="purpose-icon">∑</span>
+            <strong>수식 풀이</strong>
+            <small>논리적 문제 해결</small>
+        </button>
+
+        <button type="button" class="purpose-card"
+        onclick="selectAIPurpose('research', this)">
+            <span class="purpose-icon">⌕</span>
+            <strong>자료 조사</strong>
+            <small>정보 검색 및 출처 확인</small>
+        </button>
+
+        <button type="button" class="purpose-card"
+        onclick="selectAIPurpose('writing', this)">
+            <span class="purpose-icon">✎</span>
+            <strong>글쓰기 및 요약</strong>
+            <small>보고서 작성과 긴 글 요약</small>
+        </button>
+
+        <button type="button" class="purpose-card"
+        onclick="selectAIPurpose('coding', this)">
+            <span class="purpose-icon">&lt;/&gt;</span>
+            <strong>코딩 및 프로그래밍</strong>
+            <small>코드 작성과 오류 해결</small>
+        </button>
+
+        <button type="button" class="purpose-card"
+        onclick="selectAIPurpose('lecture', this)">
+            <span class="purpose-icon">▤</span>
+            <strong>강의자료 학습</strong>
+            <small>자료 요약 및 퀴즈 제작</small>
+        </button>
+
+        <button type="button" class="purpose-card"
+        onclick="selectAIPurpose('korean', this)">
+            <span class="purpose-icon">가</span>
+            <strong>한국어 활용</strong>
+            <small>한국어 글쓰기 및 AI 활용</small>
+        </button>
+
+    </div>
+
+    <button type="button" class="recommend-button"
+    onclick="recommendAI()">
+        나에게 맞는 AI 추천받기 →
     </button>
 
     <div id="ai-recommend-result" class="result-box">
