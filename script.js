@@ -314,3 +314,18 @@ function recommendAI() {
     `;
 
 }
+
+// 학습 목적 카드 선택 기능
+function selectAIPurpose(value, element) {
+
+    // 선택값 저장
+    document.getElementById("ai-purpose-select").value = value;
+
+    // 모든 카드의 선택 표시 제거
+    document.querySelectorAll(".purpose-card").forEach(card => {
+        card.classList.remove("active");
+    });
+
+    // 클릭한 카드만 선택 표시
+    element.classList.add("active");
+}
