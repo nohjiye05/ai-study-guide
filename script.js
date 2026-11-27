@@ -243,3 +243,74 @@ function showToast(message) {
     toast.classList.remove("show");
   }, 2000);
 }
+
+// ================================
+// 7. AI 모델 추천 테스트
+// ================================
+
+const aiRecommendations = {
+
+    math: {
+        name: "ChatGPT",
+        reason: "수식 풀이와 논리적인 문제 해결에 적합합니다.",
+        detail: "공식의 의미와 계산 과정을 단계별로 설명하고 문제 해결 과정을 구조화하는 데 활용할 수 있습니다."
+    },
+
+    research: {
+        name: "Perplexity",
+        reason: "자료 조사와 출처 확인에 적합합니다.",
+        detail: "웹 검색을 바탕으로 관련 자료를 찾고 참고할 만한 출처를 확인하는 데 활용할 수 있습니다."
+    },
+
+    writing: {
+        name: "Claude",
+        reason: "긴 글 요약과 문서 구성에 적합합니다.",
+        detail: "긴 문서의 핵심 내용을 정리하고 보고서의 논리적인 구조를 구성하는 데 활용할 수 있습니다."
+    },
+
+    coding: {
+        name: "Claude",
+        reason: "코딩과 프로그래밍 작업에 활용하기 좋습니다.",
+        detail: "코드 작성, 오류 분석, 코드 개선 및 프로그래밍 개념 설명에 활용할 수 있습니다."
+    },
+
+    lecture: {
+        name: "NotebookLM",
+        reason: "강의자료 분석과 학습 정리에 적합합니다.",
+        detail: "업로드한 강의자료를 바탕으로 핵심 내용을 요약하고 학습 퀴즈를 만드는 데 활용할 수 있습니다."
+    },
+
+    korean: {
+        name: "Wrtn (뤼튼)",
+        reason: "한국어 중심의 다양한 AI 활용에 적합합니다.",
+        detail: "한국어 글쓰기와 여러 AI 모델을 활용한 다양한 작업을 시도할 수 있습니다."
+    }
+
+};
+
+function recommendAI() {
+
+    const select = document.getElementById("ai-purpose-select");
+    const result = document.getElementById("ai-recommend-result");
+
+    const purpose = select.value;
+
+    if (!purpose) {
+        showToast("학습 목적을 먼저 선택해 주세요.");
+        return;
+    }
+
+    const ai = aiRecommendations[purpose];
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        <h3>추천 AI: ${ai.name}</h3>
+        <p><strong>추천 이유</strong></p>
+        <p>${ai.reason}</p>
+        <br>
+        <p><strong>활용 방법</strong></p>
+        <p>${ai.detail}</p>
+    `;
+
+}
