@@ -566,3 +566,56 @@ footer {
   visibility: visible;
   transform: translate(-50%, 0);
 }
+/* AI 모델 비교 영역 */
+
+.ai-model-section {
+    margin: 40px 0 50px;
+    text-align: center;
+}
+
+.ai-model-section h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.ai-model-section > p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.ai-model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.ai-model-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 25px 15px;
+    transition: 0.3s;
+}
+
+.ai-model-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+}
+
+.ai-model-card h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #354b75;
+}
+
+.ai-model-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .ai-model-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
