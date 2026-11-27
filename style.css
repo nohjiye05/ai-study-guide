@@ -638,58 +638,140 @@ footer {
 ========================= */
 
 .model-test-box {
-    max-width: 750px;
+    max-width: 850px;
     margin: 35px auto 50px;
-    padding: 35px;
+    padding: 38px;
     background: #ffffff;
     border: 1px solid #e5eaf0;
-    border-radius: 15px;
+    border-radius: 18px;
     text-align: center;
+    box-shadow: 0 8px 25px rgba(20, 43, 73, 0.04);
 }
 
 .model-test-box h3 {
     color: #142b49;
-    font-size: 20px;
-    margin-bottom: 22px;
+    font-size: 21px;
+    margin-bottom: 8px;
 }
 
-#ai-purpose-select {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #dce4ed;
-    border-radius: 8px;
+.model-test-desc {
+    color: #8794a3;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+/* 학습 목적 카드 배치 */
+
+.purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.purpose-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-height: 135px;
+    padding: 20px;
     background: #ffffff;
-    color: #52677e;
-    font-size: 14px;
-    font-family: inherit;
+    border: 1px solid #e5eaf0;
+    border-radius: 13px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.model-test-box button {
-    margin-top: 18px;
-    padding: 13px 28px;
-    background: #142b49;
-    color: white;
-    border: none;
-    border-radius: 8px;
+.purpose-card:hover {
+    border-color: #9bb9d7;
+    background: #f7f9fc;
+    transform: translateY(-3px);
+}
+
+.purpose-card.active {
+    border: 2px solid #4678a9;
+    background: #edf3fa;
+}
+
+/* 카드 아이콘 */
+
+.purpose-icon {
+    width: 37px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf3fa;
+    color: #285c91;
+    border-radius: 10px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.purpose-card strong {
+    color: #24364b;
     font-size: 14px;
+}
+
+.purpose-card small {
+    color: #8794a3;
+    font-size: 12px;
+}
+
+/* AI 추천 버튼 */
+
+.model-test-box .recommend-button {
+    width: 100%;
+    margin-top: 0;
+    padding: 15px;
+    background: #142b49;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
 }
 
-.model-test-box button:hover {
+.model-test-box .recommend-button:hover {
     background: #285c91;
     transform: translateY(-2px);
 }
 
+/* 추천 결과 */
+
 #ai-recommend-result {
     text-align: left;
-    margin-top: 25px;
-    min-height: 65px;
+    margin-top: 20px;
+    min-height: 0;
     display: none;
 }
+
+/* 모바일 화면 */
 
 @media (max-width: 600px) {
     .model-test-box {
         padding: 22px 17px;
+    }
+
+    .purpose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .purpose-card {
+        min-height: 125px;
+        padding: 14px;
+    }
+
+    .purpose-card strong {
+        font-size: 13px;
+    }
+
+    .purpose-card small {
+        font-size: 11px;
     }
 }
