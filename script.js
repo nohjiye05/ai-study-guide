@@ -104,9 +104,68 @@ function showMajorGuide() {
 }
 
 
+
 // 3. AI 활용 내역서 자동 생성
 
 function makeCitation() {
+  const tool = document.getElementById("ai-tool").value.trim();
+  const purpose = document.getElementById("ai-purpose").value.trim();
+  const content = document.getElementById("ai-content").value.trim();
+  const prompt = document.getElementById("ai-prompt").value.trim();
+  const link = document.getElementById("ai-link").value.trim();
+  const date = document.getElementById("ai-date").value;
+
+  const result = document.getElementById("citation-result");
+
+  if (!tool || !purpose || !content || !prompt || !link || !date) {
+    showToast("모든 항목을 입력해 주세요.");
+    return;
+  }
+
+  // 대화 링크 형식 확인
+  try {
+    const url = new URL(link);
+
+    if (url.protocol !== "https:" && url.protocol !== "http:") {
+      showToast("올바른 대화 링크를 입력해 주세요.");
+      return;
+    }
+  } catch (error) {
+    showToast("올바른 대화 링크를 입력해 주세요.");
+    return;
+  }
+
+  const citation =
+`[AI 활용 내역서]
+
+1. 활용 도구: ${tool}
+2. 활용 목적: ${purpose}
+3. 활용 내용: ${content}
+4. 사용한 프롬프트: ${prompt}
+5. 대화 링크: ${link}
+6. 사용 날짜: ${date}
+
+※ 실제 활용 내역을 바탕으로 작성되었으며, 제출 전 내용과 출처를 확인해 주세요.`;
+
+  result.textContent = citation;
+
+  const copyButton = document.createElement("button");
+  copyButton.textContent = "내역서 복사하기";
+
+  copyButton.onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(citation);
+      showToast("AI 활용 내역서가 복사되었습니다!");
+    } catch (error) {
+      showToast("복사에 실패했습니다. 브라우저 권한을 확인해 주세요.");
+    }
+  };
+
+  result.appendChild(document.createElement("br"));
+  result.appendChild(document.createElement("br"));
+  result.appendChild(copyButton);
+}
+
   const tool = document.getElementById("ai-tool").value.trim();
   const purpose = document.getElementById("ai-purpose").value.trim();
   const content = document.getElementById("ai-content").value.trim();
